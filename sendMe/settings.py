@@ -26,7 +26,10 @@ SECRET_KEY = 'django-insecure-cdh2j!1pp6kk1@gwjrm@!60rz04&*r*pm=o$)vynwh(sbj07jp
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '192.168.31.242',
+    '127.0.0.1',
+]
 
 
 # Application definition
@@ -141,7 +144,9 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static/media'),
 ]
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
+STATIC_ROOT = "/var/www/sendme/static"
+
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media/')
