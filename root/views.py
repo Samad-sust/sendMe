@@ -3,13 +3,18 @@ from django.http import HttpResponse
 
 from submission.forms import SubmissionForm
 from .extra_functions import check_submission_validity
+from submission.models import Submission, SessionToken
+from academic.models import Course, Assignment
 # Create your views here.
 
 def home(request):
 
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
-        submission_form = SubmissionForm(request.POST, request.FILES)
+        try:
+            submission_form = SubmissionForm(request.POST, request.FILES)
+        except:
+            return HttpResponse('Something went wrong')
         # check whether it's valid:
         print('Submission Received')
         # print(submission_form)
@@ -23,13 +28,28 @@ def home(request):
             user_agent = request.headers['User-Agent'] # get the details about users' browser
 
             submission_valid = check_submission_validity(course_code, assignment_code, session_token)
-            if submission_valid:
-                print('submission is valid')
 
-            return HttpResponse('thanks')
+            if not sub_file:
+                return HttpResponse('No file uploaded')
+                
+            if not submission_valid == True:
+               return HttpResponse(submission_valid)
+
+            new_submission = Submission.objects.create(
+                submission_assignment = Assignment.objects.get(assignment_code = assignment_code),
+                submission_course = Course.objects.get(course_code = course_code),
+                submission_session_token = SessionToken.objects.get(sessionToken_token = session_token),
+                submission_reg_no = reg_no,
+                ip_address = request_ip,
+                user_agent = user_agent,
+                submission_file = sub_file
+            )
+            new_submission.save()
+            return HttpResponse('Your submission is successful')
+
+        # return warning messege upon failing the if submission_form.is_valid() valid test       
         else:
-            # return HttpResponse('Form is not valid')
-            pass
+            return HttpResponse('The submission is not valid, please upload the files and fill up other fields carefully')
     else:
         submission_form = SubmissionForm()
         contexts = {

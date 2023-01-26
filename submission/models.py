@@ -29,7 +29,8 @@ def assin_sub_path(instance, filename):
 
     crr_year = x.strftime("%Y")
     crr_mon = x.strftime("%B")
-    return 'assignments/{0}/{1}/{2}/{3}'.format(instance.submission_course, instance.submission_assignment, crr_year,filename)
+    return 'assignments/{0}/{1}/{2}/{3}/{4}'.format(instance.submission_course, instance.submission_assignment,
+    crr_year, crr_mon, filename)
 
 class Submission(models.Model):
     """Model definition for Submission."""
@@ -46,7 +47,7 @@ class Submission(models.Model):
 
     class Meta:
         """Meta definition for Submission."""
-        unique_together = ['submission_course', 'submission_assignment']
+        # unique_together = ['submission_course', 'submission_assignment']
         verbose_name = 'Submission'
         verbose_name_plural = 'Submissions'
 
