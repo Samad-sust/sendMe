@@ -2,8 +2,49 @@
 {% load static %}
 
 {% block content %}
+    <style>  
+        .card-header:hover{
+            box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+            background: #00000080;
+        }
+    </style>
+
     <div class="container">
-    <!-- Content here -->
-    This is a list view
+    <div class="text-center mt-1">
+        <h2>All the submissions are listed here (total: {{ object_list.count }}) </h2>
+    </div>
+    {% for submission in object_list %}
+    <div class="card text-white bg-secondary mb-3">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-lg-11 col-md-12 row">
+                    <div class="col-lg-2 col-md-4 border-right">
+                        <span> 
+                            <i class="icon-study" style="color:#88e91ecf"></i> &nbsp; {{submission.submission_course.course_code}}
+                        </span>
+                    </div>
+                    <div class="col-lg-3 col-md-4 border-right">
+                        <span> 
+                            <i class="icon-id-card" style="color:#88e91ecf"></i> &nbsp;{{submission.submission_reg_no}}
+                        </span>
+                    </div>
+                    <div class="col-lg-2 col-md-4 border-right">
+                        <span> 
+                            <i class="icon-time" style="color:#88e91ecf"></i> &nbsp; {{submission.submission_time}}
+                        </span>
+                    </div>
+                    <div class="col-lg-2 col-md-4">
+                        <span> 
+                            <i class="icon-key" style="color:#88e91ecf"></i> &nbsp; {{submission.submission_session_token}}
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-1 col-md-12">
+                    <span> <a href="{{submission.submission_file.url}}" target="blank"> <i class="icon-files text-white"></i> </a> <i class="icon-trashcan text-danger"> </i></span> 
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
   </div>
 {% endblock content %}
