@@ -8,43 +8,50 @@
             background: #00000080;
         }
     </style>
-
-    <div class="container">
     <div class="text-center mt-1">
         <h2>All the submissions are listed here (total: {{ object_list.count }}) </h2>
     </div>
-    {% for submission in object_list %}
-    <div class="card text-white bg-secondary mb-3">
-        <div class="card-header">
-            <div class="row">
-                <div class="col-lg-11 col-md-12 row">
-                    <div class="col-lg-2 col-md-4 border-right">
-                        <span> 
-                            <i class="icon-study" style="color:#88e91ecf"></i> &nbsp; {{submission.submission_course.course_code}}
-                        </span>
-                    </div>
-                    <div class="col-lg-3 col-md-4 border-right">
-                        <span> 
-                            <i class="icon-id-card" style="color:#88e91ecf"></i> &nbsp;{{submission.submission_reg_no}}
-                        </span>
-                    </div>
-                    <div class="col-lg-2 col-md-4 border-right">
-                        <span> 
-                            <i class="icon-time" style="color:#88e91ecf"></i> &nbsp; {{submission.submission_time}}
-                        </span>
-                    </div>
-                    <div class="col-lg-2 col-md-4">
-                        <span> 
-                            <i class="icon-key" style="color:#88e91ecf"></i> &nbsp; {{submission.submission_session_token}}
-                        </span>
+
+    <div class="container mb-3">
+        <div class="row gutter-40 col-mb-80">
+            <div class="postcontent col-lg-9 order-lg-last">
+                {% for submission in object_list %}
+                <div class="card text-white bg-secondary mb-1">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-lg-11 col-md-12 row">
+                                <div class="col-lg-3 col-md-4 border-right">
+                                    <span> 
+                                    <i class="icon-study" style="color:#88e91ecf"></i> &nbsp; {{submission.submission_course.course_code}}
+                                    </span>
+                                </div>
+                                <div class="col-lg-3 col-md-4 border-right">
+                                    <span> 
+                                    <i class="icon-id-card" style="color:#88e91ecf"></i> &nbsp;{{submission.submission_reg_no}}
+                                    </span>
+                                </div>
+                                <div class="col-lg-3 col-md-4 border-right">
+                                    <span> 
+                                    <i class="icon-time" style="color:#88e91ecf"></i> &nbsp; {{submission.submission_time}}
+                                    </span>
+                                </div>
+                                <div class="col-lg-3 col-md-4">
+                                    <span> 
+                                    <i class="icon-key" style="color:#88e91ecf"></i> &nbsp; {{submission.submission_session_token}}
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-lg-1 col-md-12">
+                                <span> <a href="{{submission.submission_file.url}}" target="blank"> <i class="icon-files text-white"></i> </a> <i class="icon-trashcan text-danger"> </i></span> 
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-1 col-md-12">
-                    <span> <a href="{{submission.submission_file.url}}" target="blank"> <i class="icon-files text-white"></i> </a> <i class="icon-trashcan text-danger"> </i></span> 
-                </div>
+              {% endfor %}
             </div>
+           <div class="sidebar col-lg-3 border">
+              <p>Filter </p>
+           </div>
         </div>
     </div>
-    {% endfor %}
-  </div>
 {% endblock content %}
