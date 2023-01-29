@@ -1,6 +1,6 @@
 from django.db import models
 
-from datetime import datetime
+from datetime import datetime, timezone
 
 from academic.models import Course, Assignment
 
@@ -9,8 +9,8 @@ class SessionToken(models.Model):
     """Model definition for SessionToken."""
 
     sessionToken_token = models.CharField(max_length=10)
-    sessionToken_valid_till = models.TimeField(auto_now=False, auto_now_add=False)
     sessionToken_expired = models.BooleanField(default = False)
+    sessionToken_validity_time = models.DateTimeField(auto_now=False, auto_now_add=False, null=True)
 
     class Meta:
         """Meta definition for SessionToken."""
@@ -37,7 +37,7 @@ class Submission(models.Model):
 
     submission_assignment = models.ForeignKey(Assignment , on_delete=models.CASCADE)
     submission_course = models.ForeignKey(Course, on_delete=models.CASCADE)
-    submission_time = models.TimeField(auto_now=True, auto_now_add=False)
+    submission_date_time = models.DateTimeField(auto_now=True, auto_now_add=False)
     submission_session_token = models.ForeignKey( SessionToken , on_delete=models.CASCADE)
     submission_reg_no = models.CharField(max_length=20)
     ip_address = models.GenericIPAddressField(protocol="both", unpack_ipv4=False, null=True)

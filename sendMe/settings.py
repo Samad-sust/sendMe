@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'datetimeutc',
     'root',
     'people',
     'submission',
@@ -96,7 +97,7 @@ WSGI_APPLICATION = 'sendMe.wsgi.application'
 DATABASES = {
     'default': {
     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    'NAME': 'tutorial',
+    'NAME': 'sendme',
     'USER': 'samad',
     'PASSWORD': '867140',
     'HOST': '127.0.0.1',

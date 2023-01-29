@@ -21,6 +21,7 @@
                         <div class="row">
                             <div class="col-lg-11 col-md-12 row">
                                 <div class="col-lg-3 col-md-4 border-right">
+                                    <span> {{ forloop.counter }}. &nbsp; </span>
                                     <span> 
                                     <i class="icon-study" style="color:#88e91ecf"></i> &nbsp; {{submission.submission_course.course_code}}
                                     </span>
@@ -30,12 +31,12 @@
                                     <i class="icon-id-card" style="color:#88e91ecf"></i> &nbsp;{{submission.submission_reg_no}}
                                     </span>
                                 </div>
-                                <div class="col-lg-3 col-md-4 border-right">
+                                <div class="col-lg-4 col-md-4 border-right">
                                     <span> 
-                                    <i class="icon-time" style="color:#88e91ecf"></i> &nbsp; {{submission.submission_time}}
+                                    <i class="icon-time" style="color:#88e91ecf"></i> &nbsp; {{submission.submission_date_time | timesince}} ago
                                     </span>
                                 </div>
-                                <div class="col-lg-3 col-md-4">
+                                <div class="col-lg-2 col-md-4">
                                     <span> 
                                     <i class="icon-key" style="color:#88e91ecf"></i> &nbsp; {{submission.submission_session_token}}
                                     </span>

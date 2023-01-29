@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <style>  
+        .card-header:hover{
+            box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+            background: #00000080;
+        }
+    </style>
+    <div class="text-center mt-1">
+        <h2>Tokens(total: {{ object_list.count }}) </h2>
+    </div>
+
+    <div class="container mb-3">
+        <div class="row gutter-40 col-mb-80">
+            <div class="postcontent col-lg-9 order-lg-last">
+                <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">Sl</th>
+                        <th scope="col">Tokens</th>
+                        <th scope="col">Valid Till</th>
+                        <th scope="col">Validity</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for token in tokens %}
+                            <tr>
+                                <th scope="row">{{ forloop.counter }}</th>
+                                <td>{{ token.sessionToken_token }}</td>
+                                <td>{{ token.sessionToken_validity_time }}</td>
+                                
+                                <td>
+                                {% if token.sessionToken_expired %}
+                                    Expired &nbsp; <i class="icon-warning-sign text-danger"> </i>
+                                {% else %}
+                                    Valid &nbsp; <i class="icon-ok-circle text-info"> </i>
+                                {% endif %}
+                                </td>
+                                <td>
+                                    <i class="icon-edit text-info"> </i>    &nbsp;
+                                    <i class="icon-trash text-danger"></i>  &nbsp; 
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                  </table>
+            </div>
+           <div class="sidebar col-lg-3 border">
+              <p>Filter </p>
+           </div>
+        </div>
+    </div>
+{% endblock content %}
