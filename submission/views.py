@@ -18,7 +18,10 @@ class SessionTokenListView(ListView):
 
 class SessionTokenCreateView(CreateView):
     model = SessionToken
+    fields = ['sessionToken_token', 'sessionToken_validity_time' ,'sessionToken_expired']
     template_name = "create_sess_token.html"
+    success_url = '/'
+    
 
 class SessionTokenDetailView(DetailView):
     model = SessionToken
