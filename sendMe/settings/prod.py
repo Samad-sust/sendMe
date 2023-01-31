@@ -8,6 +8,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 print(BASE_DIR)
 ALLOWED_HOSTS = [
     '192.168.31.242',
+    '103.84.157.130',
     '192.168.1.103',
     '192.168.1.1',
     '127.0.0.1',
