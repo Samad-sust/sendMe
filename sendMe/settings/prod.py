@@ -27,6 +27,6 @@ DATABASES = {
 }
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, '/var/www/djago_files/sendme/')
+STATIC_ROOT = os.path.join(BASE_DIR, '/var/www/djago_files/sendme/static')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
