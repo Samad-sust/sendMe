@@ -1,30 +1,49 @@
-# Declare permanat environmental variable (variable name is given after some lines)
+## === SendMe: Solution for submitting assignments/exam paper online ===
+
+### + Declare permanat environmental variable (variable name is given after some lines)
 
 
-# Install dependencies 
+### + Install dependencies 
+
+`
 pip install -r requirement.txt
+`
 
-# sendMe Environmental Variable name 
+### + sendMe Environmental Variable name 
+
 in production: SEND_ME_DEVELOPMENT_MODE
 in local PC:  SEND_ME_DEVELOPMENT_MODE
 in systemd: SEND_ME_DEVELOPMENT_MODE
 
-# bash file for the gunicorn
-/home/samad/websites/django/sendme/prod_server_bin/start-sendme-server.sh
 
-# the gunicorn config
+### + bash file for the gunicorn
+```
+/home/samad/websites/django/sendme/prod_server_bin/start-sendme-server.sh
+```
+
+### + the gunicorn config
+
+```
 cd /home/samad/websites/django/sendme
 source venvSendme/bin/activate
 cd sendMe
 gunicorn sendMe.wsgi
 
-# Gunicorn service name in the /etc/systemd
+```
+
+### Gunicorn service name in the /etc/systemd
+```
 sendme-gunicorn.service
+```
 
 
-# sites-available/sendme
+### sites-available/sendme
+
 file location: /etc/nginx/sites-available/sendme 
-=============================================================
+================================================
+
+
+```
 
 upstream django {
   server 127.0.0.1:8000;
@@ -54,10 +73,13 @@ upstream django {
 
   }
   
+ ```
 
-# system created for gunicorn so that it can automatically be startted
+### system created for gunicorn so that it can automatically be startted
 file location: cat /etc/systemd/system/sendme-gunicorn.service 
 =============================================================
+
+```
 
 [Unit]
 Description=Gunicorn server for sendme website
@@ -74,3 +96,4 @@ Restart=on-failure
 [Install]
 WantedBy=multi-user.target
 
+```
