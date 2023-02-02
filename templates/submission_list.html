@@ -9,13 +9,13 @@
         }
     </style>
     <div class="text-center mt-1">
-        <h2>All the submissions are listed here (total: {{ object_list.count }}) </h2>
+        <h2>All the submissions are listed here (total: {{ submission_list.count }}) </h2>
     </div>
 
     <div class="container mb-3">
         <div class="row gutter-40 col-mb-80">
             <div class="postcontent col-lg-9 order-lg-last">
-                {% for submission in object_list %}
+                {% for submission in submission_list %}
                 <div class="card text-white bg-secondary mb-1">
                     <div class="card-header">
                         <div class="row">
@@ -51,7 +51,36 @@
               {% endfor %}
             </div>
            <div class="sidebar col-lg-3 border">
-              <p>Filter </p>
+              <div data-content class="mt-2">
+                <div data-accordion>
+                    <form>
+                        {% csrf_token %}
+                        <div class="form-row">
+                            <div class="col">
+                                <label for="">Assignment</label>
+                                <p> {{filtered_items.form.submission_assignment}} </p>
+                            </div>
+                            <div class="col">
+                                <label for="">Course </label>
+                                <p> {{filtered_items.form.submission_course}} </p>
+                            </div>
+                            <div class="col">
+                                <label for="">Session token</label>
+                                <p> {{filtered_items.form.submission_session_token}} </p>
+                            </div>
+                            <div class="col">
+                                <label for="">Submission Date </label>
+                                <p> {{filtered_items.form.submission_date_time}} </p>
+                            </div>
+                            <div class="col">
+                                <label for="">Reg No</label>
+                                <p> {{filtered_items.form.submission_reg_no}} </p>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-info">Filter</button>
+                    </form>
+                </div>
+            </div>
            </div>
         </div>
     </div>

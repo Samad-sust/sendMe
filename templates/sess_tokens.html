@@ -48,9 +48,23 @@
                     </tbody>
                   </table>
             </div>
-           <div class="sidebar col-lg-3 border">
-              <p>Filter </p>
-           </div>
+            <div class="sidebar col-lg-3 border">
+                <div data-content class="mt-2">
+                  <div data-accordion>
+                      <form>
+                          {% csrf_token %}
+                          <div class="form-row">
+                              <div class="col">
+                                  <label for=""></label>
+                                  <p> {{filtered_items.form}} </p>
+                              </div>
+                              
+                          </div>
+                          <button type="submit" class="btn btn-info">Filter</button>
+                      </form>
+                  </div>
+              </div>
+             </div>
         </div>
     </div>
 {% endblock content %}
