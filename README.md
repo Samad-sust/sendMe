@@ -11,9 +11,9 @@ pip install -r requirement.txt
 
 ### + sendMe Environmental Variable name 
 
-in production: SEND_ME_DEVELOPMENT_MODE
-in local PC:  SEND_ME_DEVELOPMENT_MODE
-in systemd: SEND_ME_DEVELOPMENT_MODE
++ in production: SEND_ME_DEVELOPMENT_MODE
++ in local PC:  SEND_ME_DEVELOPMENT_MODE
++ in systemd: SEND_ME_DEVELOPMENT_MODE
 
 
 ### + bash file for the gunicorn
@@ -39,8 +39,7 @@ sendme-gunicorn.service
 
 ### sites-available/sendme
 
-file location: /etc/nginx/sites-available/sendme 
-================================================
+#### file location: /etc/nginx/sites-available/sendme 
 
 
 ```
@@ -76,8 +75,9 @@ upstream django {
  ```
 
 ### system created for gunicorn so that it can automatically be startted
+
 file location: cat /etc/systemd/system/sendme-gunicorn.service 
-=============================================================
+
 
 ```
 
