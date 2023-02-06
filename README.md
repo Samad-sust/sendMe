@@ -11,6 +11,13 @@ pip install -r requirement.txt
 
 ### + sendMe Environmental Variable name 
 
+```
+
+# How to permanently set environmental variables in ubuntu
+
+sudo echo "SEND_ME_DEVELOPMENT_MODE=prod" >> /etc/environment
+
+```
 + in production: SEND_ME_DEVELOPMENT_MODE
 + in local PC:  SEND_ME_DEVELOPMENT_MODE
 + in systemd: SEND_ME_DEVELOPMENT_MODE
