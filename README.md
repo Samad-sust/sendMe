@@ -8,6 +8,21 @@
 `
 pip install -r requirement.txt
 `
+### Postgress Settings
+```
+# Login
+sudo -u postgres psql
+
+# User creation:
+CREATE ROLE banglasketch WITH LOGIN PASSWORD '******';
+
+# Database creation:
+CREATE DATABASE banglasketch;
+
+# Assign user to Database:
+grant all privileges on database banglasketch to banglasketch;
+
+```
 
 ### + sendMe Environmental Variable name 
 
