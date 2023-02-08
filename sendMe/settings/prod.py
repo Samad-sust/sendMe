@@ -9,6 +9,7 @@ print(BASE_DIR)
 ALLOWED_HOSTS = [
     'banglasketch.org',
     'submit.banglasketch.org',
+    'submission.banglasketch.org',
     '192.168.31.242',
     '103.84.157.130',
     '192.168.1.103',
