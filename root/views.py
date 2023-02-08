@@ -30,10 +30,12 @@ def home(request):
             submission_valid = check_submission_validity(course_code, assignment_code, session_token)
 
             if not sub_file:
-                return HttpResponse('No file uploaded')
+                # return HttpResponse('No file uploaded')
+               return render(request, 'submission-failure.html', {'msg': submission_valid})
                 
             if not submission_valid == True:
-               return HttpResponse(submission_valid)
+            #    return HttpResponse(submission_valid)
+               return render(request, 'submission-failure.html', {'msg': submission_valid})
 
             new_submission = Submission.objects.create(
                 submission_assignment = Assignment.objects.get(assignment_code = assignment_code),
@@ -45,11 +47,11 @@ def home(request):
                 submission_file = sub_file
             )
             new_submission.save()
-            return HttpResponse('Your submission is successful')
+            return render(request, 'submission-success.html')
 
         # return warning messege upon failing the if submission_form.is_valid() valid test       
         else:
-            return HttpResponse('The submission is not valid, please upload the files and fill up other fields carefully')
+            return render(request, 'submission-failure.html', {'msg': 'Submission failed, '})
     else:
         submission_form = SubmissionForm()
         contexts = {
