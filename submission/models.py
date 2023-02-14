@@ -29,8 +29,8 @@ def assin_sub_path(instance, filename):
 
     crr_year = x.strftime("%Y")
     crr_mon = x.strftime("%B")
-    return 'assignments/{0}/{1}/{2}/{3}/{4}'.format(instance.submission_course, instance.submission_assignment,
-    crr_year, crr_mon, filename)
+    return 'assignments/{0}/{1}/{2}/{3}/{4}/{5}'.format(instance.submission_course, instance.submission_assignment,
+    crr_year, crr_mon, instance.submission_session_token, filename)
 
 class Submission(models.Model):
     """Model definition for Submission."""
