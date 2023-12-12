@@ -1,14 +1,13 @@
-## === SendMe: Solution for submitting assignments/exam papers online without sig in hastle===
+## === SendMe: Solution for submitting assignments/exam papers online without sign in hastle===
 
 ### + Declare permanent environmental variable (variable name is given after some lines)
 
+### + Install dependencies
 
-### + Install dependencies 
+`pip install -r requirement.txt`
 
-`
-pip install -r requirement.txt
-`
 ### Postgress Settings
+
 ```
 # Login
 sudo -u postgres psql
@@ -24,7 +23,7 @@ grant all privileges on database banglasketch to banglasketch;
 
 ```
 
-### + sendMe Environmental Variable name 
+### + sendMe Environmental Variable name
 
 ```
 
@@ -33,12 +32,13 @@ grant all privileges on database banglasketch to banglasketch;
 sudo echo "SEND_ME_DEVELOPMENT_MODE=prod" >> /etc/environment
 
 ```
+
 + in production: SEND_ME_DEVELOPMENT_MODE
 + in local PC:  SEND_ME_DEVELOPMENT_MODE
 + in systemd: SEND_ME_DEVELOPMENT_MODE
 
-
 ### + bash file for the gunicorn
+
 ```
 /home/samad/websites/django/sendme/prod_server_bin/start-sendme-server.sh
 ```
@@ -54,15 +54,14 @@ gunicorn sendMe.wsgi
 ```
 
 ### Gunicorn service name in the /etc/systemd
+
 ```
 sendme-gunicorn.service
 ```
 
-
 ### sites-available/sendme
 
-#### file location: /etc/nginx/sites-available/sendme 
-
+#### file location: /etc/nginx/sites-available/sendme
 
 ```
 
@@ -76,12 +75,12 @@ upstream django {
       root /var/www/djago_files/sendme;
       try_files $uri =404;
     }
-    
+  
     location /media/ {
       root /var/www/djago_files/sendme;
       try_files $uri =404;
     }
-    
+  
     location / {
       try_files $uri @send_to_django;
     }
@@ -94,12 +93,11 @@ upstream django {
 
   }
   
- ```
+```
 
 ### system created for gunicorn so that it can automatically be startted
 
-file location: cat /etc/systemd/system/sendme-gunicorn.service 
-
+file location: cat /etc/systemd/system/sendme-gunicorn.service
 
 ```
 
