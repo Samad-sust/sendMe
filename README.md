@@ -1,6 +1,6 @@
-## === SendMe: Solution for submitting assignments/exam paper online ===
+## === SendMe: Solution for submitting assignments/exam papers online without sig in hastle===
 
-### + Declare permanat environmental variable (variable name is given after some lines)
+### + Declare permanent environmental variable (variable name is given after some lines)
 
 
 ### + Install dependencies 
